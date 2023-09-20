@@ -1,3 +1,7 @@
+# Week 3 Homework Assignment: Introduction to Databases with SQLite
+
+# 1. Data Exploration and Analysis:
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -30,3 +34,9 @@ print(df1.isnull().sum())
 # Example: Frequency counts for a categorical column 'Description' in Dataset 1
 print("Frequency Counts for 'Description' in Dataset 1:")
 print(df1['Description'].value_counts())
+
+# 2. SQLite Database Operations:
+
+import sqlite3
+# Create or connect to the SQLite database
+conn = sqlite3.connect('health.db')
