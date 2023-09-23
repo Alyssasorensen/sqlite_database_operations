@@ -81,4 +81,15 @@ for column, results in analysis_results.items():
     print(results)
     print("\n")
 ```
-After this I showed an example of finding the measures of central tendency of an individual column, it is based on "gross charge" and "aetnacommercialhmopos" at Stony Brook Medicine. I then printed the value counts for the categorical columns for the Stony Brook Medicine dataset. After completing the basic statistics for Stony Brook Medicine, I followed the same steps for the basic statistics of Memorial Health Miramar Hospital. I started with the frequency counts of "proceduredescription." I then found the measures of central tendency for default charge, er charge, inpatient therapy, and cash charge. I then printed a column labeled default charge to show the measures of central tendency for one column from the dataset. Following this, I printed the value counts for the categorical columns on the Memorial Health Miramar Hospital dataset. After doing basic statistics and value counts for both datasets, I completed data distributions for both datasets   
+After this I showed an example of finding the measures of central tendency of an individual column, it is based on "gross charge" and "aetnacommercialhmopos" at Stony Brook Medicine. I then printed the value counts for the categorical columns for the Stony Brook Medicine dataset. After completing the basic statistics for Stony Brook Medicine, I followed the same steps for the basic statistics of Memorial Health Miramar Hospital. I started with the frequency counts of "proceduredescription." I then found the measures of central tendency for default charge, er charge, inpatient therapy, and cash charge. I then printed a column labeled default charge to show the measures of central tendency for one column from the dataset. Following this, I printed the value counts for the categorical columns on the Memorial Health Miramar Hospital dataset. 
+After doing basic statistics and value counts for both datasets, I completed data distributions for both datasets.    
+```
+plt.figure(figsize=(9,9))
+plt.hist(sbm['grosscharge'], bins=20, color='skyblue', edgecolor='black')
+plt.title('Frequency of Stony Brook Medicine Gross Charge')
+plt.xlabel('Gross Charge')
+plt.ylabel('Frequency')
+plt.grid(True)
+plt.show()
+```
+I did two column types from Stony Brook Medicine and Memorial Health Miramar Hospital to display the data distribution of certain standard charges. 
