@@ -2,7 +2,7 @@
 ## HHA 504 Homework Assignment 3
 
 ### Details on the Datasets I Selected
-I selected datasets from Stony Brook Medicine and Memorial Healthcare System - Miramar Hospital. Both of the datasets focus on the hospital's standard charges for services. Both of the datasets were CSV files. The dataset from Stony Brook Medicine includes columns such as code, description, type, package/line_level, gross charge, discounted cash price, and other columns that focused on the standard charges of certain insurance providers and plan types. Stony Brook Medicine had a wide variety of insurance providers. The other dataset was focused on Memorial Hospital Miramar. The dataset from Memorial Hospital Miramar included columns such as CDM ross charge, procedure code, procedure description, lawson number, revenue code, and default charge. Both datasets had varying standard charges and had both categorical and numerical values.         
+I selected datasets from Stony Brook Medicine and Memorial Healthcare System - Miramar Hospital. Both of the datasets focus on the hospital's standard charges for services. Both of the datasets were CSV files. The dataset from Stony Brook Medicine includes columns such as code, description, type, package/line_level, gross charge, discounted cash price, and other columns that focused on the standard charges of certain insurance providers and plan types. Stony Brook Medicine had a wide variety of insurance providers. The other dataset was focused on Memorial Hospital Miramar. The dataset from Memorial Hospital Miramar included columns such as CDM gross charge, procedure code, procedure description, lawson number, revenue code, and default charge. Both datasets had varying standard charges and categorical and numerical values.         
 
 ### Account of the Exploratory Data Analysis Process
 Before beginning the EDA process, I had to load in the packages. After loading the packages, I loaded the datasets from Stony Brook Medicine and Memorial Hospital Miramar. To start the EDA process, I printed the heads of both datasets to show an overview of each. I then printed summary statistics for both of the datasets. This included the count, mean, standard deviation, minimum value, 25% quartile, 50% quartile, 75% quartile, and maximum value for each of the columns. Following this, I cleaned the data and handled missing values. I did this by entering the following code. 
@@ -94,7 +94,7 @@ plt.show()
 ```
 I did two column types from Stony Brook Medicine and Memorial Health Miramar Hospital to display the data distribution of certain standard charges. 
 ### Instructions to Replicate my SQLite Database Setup
-First, I had to import sqlite3. Following this, I connected to the SQLite Database. This was done with the following code. 
+First, I had to import sqlite3. Following this, I connected to the SQLite Database. This was done by using the following code. 
 ```
 conn = sqlite3.connect('health.db')
 cursor = conn.cursor()
@@ -156,9 +156,18 @@ After this I created the health.db file using the code below.
 ```
 engine = create_engine('sqlite:///health.db')
 ```
-To read the SQL database that I created I inputted this code. 
+To read the SQL database that I created, I inputted this code. 
 ```
 memorial = pd.read_sql("select * from memorial;", conn)
 memorial
 ```
-Lastly, I completed automatically created tables by implmenting the to_sql function from Pandas, using the example data from Part 1, into the SQLite database.  
+Lastly, I automatically created tables by implmenting the to_sql function from Pandas, using the example data from Part 1, into the SQLite database. 
+```
+# Connect to the SQLite database
+conn = sqlite3.connect('health.db')
+
+memorial.to_sql('memorial', conn, if_exists='replace', index=False)
+
+# Close the connection
+conn.close()
+```
