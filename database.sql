@@ -3,7 +3,7 @@
 import sqlite3
 # Connect to the SQLite database (it will create the database if it doesn't exist)
 conn = sqlite3.connect('health.db')
-conn.close()  # Close the connection when done
+
 
 import sqlite3
 
