@@ -6,6 +6,7 @@ I selected datasets from Stony Brook Medicine and Memorial Healthcare System - M
 
 ### Account of the Exploratory Data Analysis Process
 Before beginning the EDA process, I had to load in the packages. After loading the packages, I loaded the datasets from Stony Brook Medicine and Memorial Hospital Miramar. To start the EDA process, I printed the heads of both datasets to show an overview of each. I then printed summary statistics for both of the datasets. This included the count, mean, standard deviation, minimum value, 25% quartile, 50% quartile, 75% quartile, and maximum value for each of the columns. Following this, I cleaned the data and handled missing values. I did this by entering the following code,
+```
 > def clean_column_names(sbm):
 >
 >   def clean_name(name):
@@ -17,3 +18,4 @@ Before beginning the EDA process, I had to load in the packages. After loading t
 >
 > sbm = clean_column_names(sbm)
 > sbm
+```
