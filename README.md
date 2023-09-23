@@ -11,9 +11,9 @@ Before beginning the EDA process, I had to load in the packages. After loading t
 >   def clean_name(name):
 >        cleaned_name = re.sub(r'[^a-zA-Z0-9]', '', name)
 >        return cleaned_name.lower()
-
+>
 >    sbm.columns = [clean_name(col) for col in sbm.columns]
 >    return sbm
-
+>
 > sbm = clean_column_names(sbm)
 > sbm
