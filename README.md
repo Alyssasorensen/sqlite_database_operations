@@ -93,3 +93,72 @@ plt.grid(True)
 plt.show()
 ```
 I did two column types from Stony Brook Medicine and Memorial Health Miramar Hospital to display the data distribution of certain standard charges. 
+### Instructions to Replicate my SQLite Database Setup
+First, I had to import sqlite3. Following this, I connected to the SQLite Database. This was done with the following code. 
+```
+conn = sqlite3.connect('health.db')
+cursor = conn.cursor()
+conn.close()  # Close the connection when done
+```
+After this I created a table based on the Memorial Health Miramar Hospital as an example. 
+I did this by using the following code. 
+```
+cursor.execute('''
+    CREATE TABLE IF NOT EXISTS memorial
+    (
+        [cdmgrosschargeandcashpaysection] TEXT, 
+        [procedurecode] INTEGER, 
+        [proceduredescription] TEXT, 
+        [lawsonnumber] INTEGER, 
+        [ndc] TEXT, 
+        [revenuecode] INTEGER, 
+        [cptcode] INTEGER,
+        [unnamed8] TEXT,
+        [defaultcharge] REAL,
+        [ercharge] REAL,
+        [inpatienttherapy] REAL,
+        [cashcharge] REAL
+    )
+''')
+```
+I then inserted sample data into the "memorial" table. 
+```
+cursor.execute('''
+    INSERT INTO memorial
+    VALUES
+        ('11000004', 11000004, 'HC Private Most Common', 90006297, 'NaN', 110.0, 'NaN', 'NaN', 2445.0, 'NaN', 'NaN', 978.0),
+        ('12000005', 12300001, 'HC Semi-Private Obstetrics', 90006306, 'NaN', 120.0, 'NaN', 'NaN', 2311.0, 'NaN', 'NaN', 924.0)
+''')
+```
+I committed the changes using "conn.commit()." I then executed a query to fetch table names and print them.
+```
+cursor.execute('''
+    SELECT name
+    FROM sqlite_master
+    WHERE type= 'table'
+''')
+
+tables = cursor.fetchall()
+
+for value in tables:
+    print(value)
+```
+This resulted in "('memorial',)"
+After this, I ran the following code to display all of the values I inserted. 
+```
+cursor.execute('''
+  SELECT * FROM memorial;
+''')
+
+print(cursor.fetchall())
+```
+After this I created the health.db file using the code below.
+```
+engine = create_engine('sqlite:///health.db')
+```
+To read the SQL database that I created I inputted this code. 
+```
+memorial = pd.read_sql("select * from memorial;", conn)
+memorial
+```
+Lastly, I completed automatically created tables by implmenting the to_sql function from Pandas, using the example data from Part 1, into the SQLite database.  
